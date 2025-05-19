@@ -1,1 +1,108 @@
-# tomylove2
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>for my love my bf💖</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #cdb4db; /* สีม่วงพาสเทล */
+      color: #333;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      color: #ff3399;
+      font-size: 3em;
+    }
+    p {
+      font-size: 1.5em;
+      margin-top: 20px;
+    }
+    .heart {
+      font-size: 4em;
+      color: red;
+      animation: beat 1s infinite;
+    }
+    iframe {
+      margin-top: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      display: none; /* ซ่อนไว้ก่อน */
+    }
+    button {
+      margin-top: 30px;
+      padding: 10px 20px;
+      font-size: 1.2em;
+      background-color: #ff3399;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #e62e8b;
+    }
+    .photo img {
+      width: 300px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      margin-top: 30px;
+    }
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+  </style>
+</head>
+<body>
+  <h1>ถึงกำปั้นของพิมพ์พลอย💗</h1>
+  <p>I need to tell you something so much. I know you know what I will tell you 🥰</p>
+  <p>I love you so much ขอบคุณที่อยู่ข้างๆ กันเสมอ</p>
+  <div class="heart">❤️</div>
+
+  <!-- รูปภาพแมว -->
+  <div class="photo">
+    <img src="catcat.png" alt="hugging cats" />
+  </div>
+
+  <!-- ปุ่มเล่นเพลง -->
+  <button id="playBtn">กดเพื่อเล่นเพลง 🎵</button>
+
+  <!-- เพลง YouTube (ซ่อนไว้ก่อน) -->
+  <iframe id="ytPlayer" width="360" height="215" 
+    src="https://www.youtube.com/embed/N9bashij_7c?enablejsapi=1" 
+    title="YouTube video player" frameborder="0" 
+    allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+  <script>
+    const btn = document.getElementById('playBtn');
+    const iframe = document.getElementById('ytPlayer');
+    let player;
+
+    // โหลด YouTube IFrame API
+    let tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    let firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    // ฟังก์ชันนี้เรียกโดย YouTube API เมื่อโหลดเสร็จ
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('ytPlayer', {
+        events: {
+          'onReady': onPlayerReady,
+        }
+      });
+    }
+
+    function onPlayerReady(event) {
+      btn.addEventListener('click', () => {
+        iframe.style.display = 'block'; // แสดง iframe
+        player.playVideo(); // เล่นเพลง
+        btn.style.display = 'none'; // ซ่อนปุ่ม
+      });
+    }
+  </script>
+</body>
+</html>
